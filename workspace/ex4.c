@@ -1,5 +1,5 @@
 #include <stdio.h>
-typedef short TypeEntier;
+typedef unsigned long long TypeEntier;
 
 
 TypeEntier factorielle(TypeEntier N){
@@ -15,11 +15,18 @@ TypeEntier factorielle(TypeEntier N){
     else return -1;
 }
 
+void afficheFactorielle(int N){
+    for(int i=1; i<=N; i++){
+        printf("factorielle de %i = %llu\n",i, factorielle(i) );
+    }
+
+}
+
 
 
 
 
 int main(void) {
 
-    printf("resultat = %i\n", factorielle(3));
+    afficheFactorielle(15);
 }

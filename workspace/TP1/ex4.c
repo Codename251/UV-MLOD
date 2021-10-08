@@ -15,7 +15,10 @@ TypeEntier factorielle(TypeEntier N){
     else return -1;
 }
 
-void afficheFactorielle(int N){
+void afficheFactorielle(){
+    int N = 0;
+    printf("Entrez un nombre entier positif: ");
+    scanf("%d", &N);
     for(int i=1; i<=N; i++){
         printf("factorielle de %i = %llu\n",i, factorielle(i) );
     }
@@ -28,5 +31,5 @@ void afficheFactorielle(int N){
 
 int main(void) {
 
-    afficheFactorielle(15);
+    afficheFactorielle();
 }

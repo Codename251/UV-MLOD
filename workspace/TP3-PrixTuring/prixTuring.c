@@ -56,28 +56,45 @@ struct Winner{
 
 typedef struct Winner Winner;
 
-
-char* readWinners(nbGagnants){
-	Winner result[nbGagnants];
+void readWinners(Winner **winners,int nbGagnants){
+	*winners = (Winner *)calloc(nbGagnants, sizeof(Winner));
 	 for(int i= 0; i< nbGagnants; i++){
-		 result[i].year = scanLineAsInt();
-		 result[i].name = scanLine();
-		 result[i].description = scanLine();
+		 (*winners)[i].year = scanLineAsInt();
+		 (*winners)[i].name = scanLine();
+		 (*winners)[i].description = scanLine();
 	 }
-
-	 return result;
 };
 
-void printWinners(winners){
-	
+void printWinners(Winner * winners, int nbGagnants){
+	printf("%i\n", nbGagnants);
+	for(int i= 0; i< nbGagnants; i++){
+		printf("%i\n", winners[i].year);
+		printf("%s\n", winners[i].name);
+		printf("%s\n", winners[i].description);
+	}
 }
+
+void infosAnnee(int annee, Winner *winners, int nbGagnants){
+	for(int i= 0; i< nbGagnants; i++){
+		if(winners[i].year == annee){
+			printf("L'annee %i, ", winners[i].year);
+			printf("les gagnant(s) ont été : %s\n", winners[i].name);
+			printf("Nature des travaux : %s\n", winners[i].description);
+		};
+	}
+
+};
 
 
 int main(void)
 {
 
 	int nbGagnants = scanLineAsInt();
-	printf("nbGagnants = %i\n",nbGagnants);
+	Winner *winners;
+	readWinners(&winners, nbGagnants);
+	//printWinners(winners, nbGagnants);
+	infosAnnee(2003, winners, nbGagnants);
+	free(winners);
 
 
 	return EXIT_SUCCESS;

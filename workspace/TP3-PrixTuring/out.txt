@@ -1,1 +1,2 @@
-nbGagnants = 50
+L'annee 2003, les gagnant(s) ont été : Alan Kay
+Nature des travaux : Programmation orientée objet et création du langage Smalltalk

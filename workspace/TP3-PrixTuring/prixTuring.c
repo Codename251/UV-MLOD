@@ -86,6 +86,31 @@ void infosAnnee(int annee, Winner *winners, int nbGagnants){
 };
 
 
+int minimum(Winner *winners, int nbGagnants){
+	int min = 0;
+	for(int i= 1; i< nbGagnants; i++){
+		if(winners[min].year > winners[i].year){
+			min = i;
+		};
+	};
+	return min;
+};
+
+void sortTuringWinners(Winner *winners, int nbGagnants){
+	printf("%i\n", nbGagnants);
+	
+	for(int i= 0; i< nbGagnants; i++){
+		 
+		printf("%i\n", winners[i].year);
+		printf("%s\n", winners[i].name);
+		printf("%s\n", winners[i].description);
+	}
+
+
+
+};
+
+
 int main(void)
 {
 

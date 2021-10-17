@@ -86,28 +86,64 @@ void infosAnnee(int annee, Winner *winners, int nbGagnants){
 };
 
 
-int minimum(Winner *winners, int nbGagnants){
+int minimum(Winner *winners, int nbGagnants, int tableauIndice[nbGagnants]){
 	int min = 0;
-	for(int i= 1; i< nbGagnants; i++){
+	bool found; 
+
+	for(int i= 0; i< nbGagnants; i++){
+		for(int j=0; j<nbGagnants; j++){
+
+			if(i == tableauIndice[j]){
+				found = true;
+			}
+
+		}
+		if(found){
+			if(min != 49) min ++;
+		} 
+		else break;
+		
+	};
+	
+	
+	for(int i= 0; i< nbGagnants; i++){	
+
 		if(winners[min].year > winners[i].year){
-			min = i;
+			found = false;
+			for(int j= 0; j< nbGagnants; j++){
+				if(i == tableauIndice[j]){
+					found = true;
+				}
+			};
+
+			if(found == false){
+				min = i;
+			};
 		};
+						
+		
 	};
 	return min;
 };
 
 void sortTuringWinners(Winner *winners, int nbGagnants){
 	printf("%i\n", nbGagnants);
-	
-	for(int i= 0; i< nbGagnants; i++){
-		 
-		printf("%i\n", winners[i].year);
-		printf("%s\n", winners[i].name);
-		printf("%s\n", winners[i].description);
-	}
+	int tableauIndice[nbGagnants-1];
+	int min;
 
+	for(int i= 0; i<= nbGagnants-1; i++){
+		tableauIndice[i] = -1;
+	};
 
+	for(int i= 0; i<= nbGagnants-1; i++){
+		min = minimum(winners, nbGagnants, tableauIndice);
+		tableauIndice[i] = min;
+		printf("\n");
+		printf("%i\n", winners[min].year);
+		printf("%s\n", winners[min].name);
+		printf("%s\n", winners[min].description);
 
+	};
 };
 
 
@@ -118,7 +154,8 @@ int main(void)
 	Winner *winners;
 	readWinners(&winners, nbGagnants);
 	//printWinners(winners, nbGagnants);
-	infosAnnee(2003, winners, nbGagnants);
+	//infosAnnee(2003, winners, nbGagnants);
+	sortTuringWinners(winners, nbGagnants);
 	free(winners);
 
 

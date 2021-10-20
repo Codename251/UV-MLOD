@@ -53,9 +53,12 @@ void AfficheMatrix(MatrixArray matrices, int nombreMatrices){
         printf("%i %i\n", matrices[i].nombreDeLignes, matrices[i].nombreDeColonnes);
         for(int j=0; j< matrices[i].nombreDeLignes; j++){
             for(int k=0; k< matrices[i].nombreDeColonnes; k++){
-
-                printf("%i ", matrices[i].valeurs[(matrices[i].nombreDeColonnes*j)+k]);
-
+                if(k == matrices[i].nombreDeColonnes - 1){
+                    printf("%i", matrices[i].valeurs[(matrices[i].nombreDeColonnes*j)+k]);
+                }
+                else{
+                    printf("%i ", matrices[i].valeurs[(matrices[i].nombreDeColonnes*j)+k]); 
+                }
             };
             printf("\n");
         };

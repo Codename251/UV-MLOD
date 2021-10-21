@@ -10,9 +10,9 @@ int main(void){
 
 	l = NULL;
 	printf("estVide(l) = %s\n",estVide(l)?"TRUE":"FALSE");
-	l = creer(1);
 	
-	//l = ajoutTete(1,l);
+	
+	l = ajoutTete(1,l);
 	l = ajoutTete(2,l);
 	l = ajoutTete(4,l);
 	l = ajoutTete(1,l);
@@ -21,6 +21,7 @@ int main(void){
 	l = ajoutTete(2,l);
 	l = ajoutTete(4,l);
 	l = ajoutTete(1,l);
+
 
 	afficheListe_i(l);
 

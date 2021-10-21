@@ -19,10 +19,7 @@ Liste creer(Element v){
 
 // ajoute l'élément v en tete de la liste l
 Liste ajoutTete(Element v, Liste l) {
-	if (l == NULL || nouvelleCellule == NULL)
-    {
-        exit(EXIT_FAILURE);
-    }
+
 	Liste n = creer(v);
 	n->suiv = l;
 	return n;
@@ -55,26 +52,66 @@ void afficheListe_i(Liste l) {
 
 // version recursive
 void afficheListe_r(Liste l) {
-	TODO;
+	Liste p = l;
+
+	if(estVide(p)){
+		printf("\n");
+	}
+		
+	else{
+		afficheElement(p->val);	
+		return afficheListe_r(p->suiv);
+	}
+		
 }
 
-void detruireElement(Element e) {}
+void detruireElement(Element e) {
+	
+}
 
 // Détruit tous les éléments de la liste l
 // version itérative
 void detruire_i(Liste l) {
-	TODO;
+	Liste p = l;
+
+	while(!estVide(p)){
+		Cellule *aSupprimer = p;
+		p = p->suiv;
+		free(aSupprimer);
+	}
+
 }
 
 // version récursive
 void detruire_r(Liste l) {
-	TODO;
+	Liste p = l;
+
+	if(estVide(p)){
+	}
+		
+	else{
+		Cellule *aSupprimer = p;
+		Liste suivante = p->suiv;
+		free(aSupprimer);
+		return detruire_r(suivante);
+	}
 }
 
 // retourne la liste dans laquelle l'élément v a été ajouté en fin
 // version itérative
 Liste ajoutFin_i(Element v, Liste l) {
-	return TODO;
+	Liste p = l;
+
+	while(!estVide(p)){
+		if(p->suiv == NULL){
+			Liste f = creer(v);
+			p->suiv = f;
+		}
+		p = p->suiv;
+	}
+
+	return p;
+
 }
 
 // version recursive
@@ -90,12 +127,29 @@ bool equalsElement(Element e1, Element e2){
 // Retourne un pointeur sur l'élément de la liste l contenant la valeur v ou NULL
 // version itérative
 Liste cherche_i(Element v,Liste l) {
-	return TODO;
+	Liste p = l;
+
+	while(!estVide(p)){
+		if(v == p->val) return p;
+		else p = p->suiv;
+	}
+
+	return NULL;
+
 }
 
 // version récursive
 Liste cherche_r(Element v,Liste l) {
-	return TODO;
+	Liste p = l;
+
+	if(estVide(p)){
+		return NULL;
+	}
+		
+	else{
+		if(v == p->val) return p;
+		else return cherche_r(v, p->suiv);
+	}
 }
 
 // Retourne la liste modifiée dans la laquelle le premier élément ayant la valeur v a été supprimé

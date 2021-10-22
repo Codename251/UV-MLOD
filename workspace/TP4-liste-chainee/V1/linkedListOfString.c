@@ -36,8 +36,8 @@ int main(void){
 	l = ajoutTete("!",l);
 	l = ajoutTete("!",l);
 	l = ajoutTete("Jedi",l);
-	l = ajoutTete("est",l);
 	l = ajoutTete("un",l);
+	l = ajoutTete("est",l);
 	l = ajoutTete("Luke",l);
 
 	afficheListe_i(l);

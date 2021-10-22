@@ -24,7 +24,7 @@ int main(void){
 
 
 	afficheListe_i(l);
-
+	//afficheEnvers_r(l);
 	ajoutFin_r(99,l);
 	afficheListe_i(l);
 
